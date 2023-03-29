@@ -4,7 +4,7 @@ import './components/PokemonCard.jsx'
 import PokemonCard from './components/PokemonCard.jsx'
 
 
-function App () {
+
 const pokemonList = [
   {
     name: "bulbasaur",
@@ -15,6 +15,15 @@ const pokemonList = [
     name: "mew",
   },
 ];
+
+PokemonCard.PropTypes = {
+    pokemonList: PropTypes.shape ({
+    name: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string
+}),
+}
+
+function App () {
 
   return (
     <div>
