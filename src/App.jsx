@@ -2,6 +2,8 @@
 import './App.css'
 import './components/PokemonCard.jsx'
 import PokemonCard from './components/PokemonCard.jsx'
+import React, { useState } from "react";
+
 
 
 
@@ -31,18 +33,24 @@ const pokemonList = [
     },
   ];
 
-PokemonCard.PropTypes = {
-    pokemonList: PropTypes.shape ({
-    name: PropTypes.string.isRequired,
-    imgSrc: PropTypes.string
-}),
-}
 
 function App () {
+ const [pokemonIndex, setPokemonIndex] = useState(0);
+
+
+ const handleClickNext = () => {
+  setPokemonIndex(pokemonIndex+1)
+ }
+
+ const handleClickBack = () => {
+  setPokemonIndex(pokemonIndex-1)
+}
 
   return (
     <div>
-      <PokemonCard pokemon={pokemonList[0]}  />
+      <PokemonCard pokemon={pokemonList[pokemonIndex]}  />
+      <button onClick={handleClickBack}>back</button>
+      <button onClick={handleClickNext}>next</button>
     </div>
   )
 }
